@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/pages/notes_page.dart';
-
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'model/Note.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(NoteAdapter());
+  await Hive.openBox('notes');
   runApp(MyApp());
 }
 
@@ -27,6 +31,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return NotesPage([Note("Title 1", "Note 1 Description")]);
+    return NotesPage();
   }
 }
