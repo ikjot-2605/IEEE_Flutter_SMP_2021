@@ -18,4 +18,11 @@ class GetNotesDataSource {
     }
     return Notes;
   }
+
+  Future<void> addNote(String title, String description) async {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    CollectionReference _collectionRef =
+        await FirebaseFirestore.instance.collection("notes");
+    await _collectionRef.add({'title': title, 'description': description});
+  }
 }

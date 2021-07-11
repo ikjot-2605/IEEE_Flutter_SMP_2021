@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/datasources/get_todo.dart';
 import 'package:todo_app/model/Note.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -71,6 +72,10 @@ class AddNotePage extends StatelessWidget {
           ),
           FlatButton(
             onPressed: () {
+              GetNotesDataSource getNotesDataSource = new GetNotesDataSource();
+              getNotesDataSource
+                  .addNote(_titleController.text, _descriptionController.text)
+                  .then((value) => print('added'));
               if (_titleController.text == null ||
                   _descriptionController.text == null ||
                   _titleController.text.length == 0 ||
