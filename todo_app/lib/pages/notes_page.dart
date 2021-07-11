@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/datasources/get_todo.dart';
 import 'package:todo_app/model/Note.dart';
 import 'package:todo_app/pages/add_note-page.dart';
 import 'package:hive/hive.dart';
@@ -22,6 +23,7 @@ class NotesPage extends StatelessWidget {
     getNotes();
   }
 
+  GetNotesDataSource getNotesDataSource = new GetNotesDataSource();
   @override
   Widget build(BuildContext context) {
     getNotes();
@@ -31,6 +33,7 @@ class NotesPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          getNotesDataSource.getNotes().then((value) => print(value));
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => AddNotePage()));
         },

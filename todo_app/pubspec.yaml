@@ -30,6 +30,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   hive:
   hive_flutter:
+  cloud_firestore:
+  firebase_core:
 
 dev_dependencies:
   flutter_test:

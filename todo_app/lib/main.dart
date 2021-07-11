@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/pages/notes_page.dart';
 import 'package:hive/hive.dart';
@@ -5,6 +6,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'model/Note.dart';
 
 void main() async {
+  await Firebase.initializeApp();
+  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(NoteAdapter());
   await Hive.openBox('notes');
